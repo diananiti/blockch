@@ -1,0 +1,12 @@
+@startuml
+start
+:Create transaction;
+:Send transaction to node;
+:Node verifies transaction;
+:Node adds transaction to pool;
+:Consensus algorithm mines block;
+:Node adds block to chain;
+:Blockchain storage saves blockchain;
+:Return chain;
+stop
+@enduml

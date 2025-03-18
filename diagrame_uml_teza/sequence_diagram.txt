@@ -1,0 +1,20 @@
+@startuml
+participant Node as "Node"
+participant Blockchain as "Blockchain"
+participant ConsensusAlgorithm as "Consensus Algorithm"
+participant BlockchainStorage as "Blockchain Storage"
+
+Node->>Blockchain: addTransaction(transaction)
+Blockchain->>Blockchain: add transaction to pool
+Blockchain->>ConsensusAlgorithm: mineBlock()
+ConsensusAlgorithm->>Blockchain: mine block and add to chain
+Blockchain->>BlockchainStorage: save blockchain
+BlockchainStorage->>Blockchain: save blockchain to file
+
+Node->>Blockchain: getChain()
+Blockchain->>Node: return chain
+
+ConsensusAlgorithm->>Blockchain: start()
+Blockchain->>ConsensusAlgorithm: start mining blocks
+
+@enduml

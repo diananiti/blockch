@@ -1,0 +1,22 @@
+@startuml
+node "Node 1" as node1 {
+  component "Blockchain" as blockchain1
+  component "Consensus Algorithm" as consensus1
+  component "TcpListener" as listener1
+}
+
+node "Node 2" as node2 {
+  component "Blockchain" as blockchain2
+  component "Consensus Algorithm" as consensus2
+  component "TcpListener" as listener2
+}
+
+node "Blockchain Storage" as storage {
+  component "Blockchain Storage" as blockchainStorage
+}
+
+node1 -- node2
+node1 -- storage
+node2 -- storage
+
+@enduml

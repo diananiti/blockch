@@ -1,0 +1,49 @@
+@startuml
+class Blockchain {
+  - chain: List<Block>
+  - transactionPool: List<Transaction>
+  + addTransaction(transaction: Transaction)
+  + mineBlock()
+  + getChain(): List<Block>
+}
+
+class Block {
+  - index: int
+  - timestamp: int
+  - previousHash: byte[]
+  - transactions: List<Transaction>
+  - hash: byte[]
+  + calculateHash()
+}
+
+class Transaction {
+  - from: string
+  - to: string
+  - amount: int
+  + toString()
+}
+
+class Node {
+  - blockchain: Blockchain
+  - listener: TcpListener
+  + start()
+  + handleClient(client: TcpClient)
+}
+
+class ConsensusAlgorithm {
+  - blockchain: Blockchain
+  + start()
+}
+
+class BlockchainStorage {
+  - filePath: string
+  + saveBlockchain(blockchain: Blockchain)
+  + loadBlockchain(): Blockchain
+}
+
+Blockchain --* Block
+Blockchain --* Transaction
+Node --* Blockchain
+ConsensusAlgorithm --* Blockchain
+BlockchainStorage --* Blockchain
+@enduml
